@@ -1,0 +1,18 @@
+#token 
+*ile_for_bot.py
+#temporary
+__pycache__/
+#something for testing
+*WTF.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+
+

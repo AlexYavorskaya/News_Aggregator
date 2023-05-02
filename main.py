@@ -52,14 +52,14 @@ bot = telebot.TeleBot(bot_token)
 def start(message):
 
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    btn1 = types.KeyboardButton("👋 I want to know latest news about Russian war in Ukraine")
+    btn1 = types.KeyboardButton("👋 I want to know latest news about Putin's Russian war in Ukraine")
     markup.add(btn1)
     bot.send_message(message.from_user.id, "👋 Hello! Let's start!", reply_markup=markup)
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
 
-    if message.text == '👋 I want to know latest news about Russian war in Ukraine':
+    if message.text == "👋 I want to know latest news about Putin's Russian war in Ukraine":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
         cnn_button = types.KeyboardButton('CNN')
         bbc_button = types.KeyboardButton('BBC')

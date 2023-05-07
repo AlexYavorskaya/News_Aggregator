@@ -16,7 +16,7 @@ today = today.strftime("%Y/%m/%d")
 yesterday = yesterday.strftime("%Y/%m/%d")
 
 #key words for scraping
-key_words = ['Russia','war ','nuclear ','Putin ','killed ','rocket','Duma','Poland','Polish ','Duda ','Zelenski','Rada']
+key_words = ['Russia','war ','nuclear ','Putin ','killed ','rocket','Duma','Poland','Polish ','Duda ','Zelenski','Rada','Ukrain',"Wagner"]
 
 #structure of scraping data
 Article = namedtuple("Article", "title link")

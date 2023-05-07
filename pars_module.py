@@ -41,7 +41,7 @@ def cnn(link):
                             link='https://edition.cnn.com'+element['href']
                     )
                 )  
-                
+                 
 
     for element in soup.find_all('a',class_="container__link container_lead-plus-headlines-with-images__link"):
             
@@ -52,10 +52,12 @@ def cnn(link):
                             title=element.text.replace('\n', '').replace('\xa0','').strip(),
                             link='https://edition.cnn.com'+element['href']
                     )
-                )  
+                ) 
+            
+    
     
     articles = articles_world + articles_europe
-    
+
     return articles
 
 #BBC
@@ -75,7 +77,7 @@ def bbc(link):
                                 title=element.text,
                                 link='https://www.bbc.com'+element['href']
                         )
-                )  
+                )
 
     return list(set(articles))
 
@@ -96,8 +98,12 @@ def meduza(link):
                                 title=element.text,
                                 link='https://meduza.io' + element['href']
                         )
-                    )  
+                    )
+    return articles
+                    
+    
+
     
                   
                 
-    return articles
+    

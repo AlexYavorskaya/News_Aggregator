@@ -32,17 +32,28 @@ today = today.strftime("%Y/%m/%d")
 yesterday = yesterday.strftime("%Y/%m/%d")
 
 #key words for scraping
-key_words = ['Russia','war ','nuclear ','Putin ','killed ','rocket','Duma','Poland','Polish ','Duda ','Zelenski','Rada']
+#key_words = ['Russia','war ','nuclear ','Putin ','killed ','rocket','Duma','Poland','Polish ','Duda ','Zelenski','Rada']
 
 #structure of scraping data
 Article = namedtuple("Article", "title link")
 
-#cnn_result function
-cnn_func = str(list((set(cnn(cnn_world) + cnn(cnn_europe)))))
-#bbc result function
-bbc_func = str(bbc(bbc_link))
-#meduza result function
-meduza_func = str(list(set(meduza(meduza_main))))
+#cnn_result
+if len(cnn(cnn_world)) == 0 and len(cnn(cnn_europe)) == 0:
+    cnn_func = "There are no news. Please try later. "
+else:
+    cnn_func = str(list((set(cnn(cnn_world) + cnn(cnn_europe)))))
+
+#bbc result
+if len(bbc(bbc_link)) == 0:
+    bbc_func = "There are no news. Please try later. "
+else:
+    bbc_func = str(bbc(bbc_link))
+
+#meduza result 
+if len(meduza(meduza_main)) == 0:
+    meduza_func = "There are no news. Please try later. "
+else:
+    meduza_func = str(list(set(meduza(meduza_main))))
 
 
 #BOT
@@ -66,7 +77,7 @@ def get_text_messages(message):
         meduza_button = types.KeyboardButton('Meduza')
         go_to_website = types.KeyboardButton('Original sourses')
         markup.add(cnn_button,bbc_button,meduza_button,go_to_website)
-        bot.send_message(message.from_user.id, '❓ Choose the newspaper', reply_markup=markup) #ответ бота
+        bot.send_message(message.from_user.id, '❓ Choose the newspaper', reply_markup=markup) 
 
     elif message.text == 'Original sourses':
 
@@ -86,5 +97,6 @@ def get_text_messages(message):
 
     elif message.text =="Meduza":
         bot.send_message(message.from_user.id, meduza_func, parse_mode = 'html')    
+    
 
 bot.polling(non_stop=True)
